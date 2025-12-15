@@ -5,7 +5,7 @@ import type { Movie } from '../types'
 export function useNowPlaying(page: number) {
   const pageParam = Number(page) || 1
   return useQuery<Movie[]>({
-    queryKey: ['movies', 'now_playing'],
+    queryKey: ['movies', 'now_playing',pageParam],
     queryFn: () => fetchNowPlaying(pageParam).then(res => res.data.results),
     staleTime: 1000 * 60, // 1 minute
   })

@@ -5,7 +5,7 @@ import type { Movie } from '../types'
 export function usePopularMovies(page: number) {
   const pageParam = page ||1;
   return useQuery<Movie[]>({
-    queryKey: ['movies', 'popular'],
+    queryKey: ['movies', 'popular',pageParam],
     queryFn: () => fetchPopular(pageParam).then(res => res.data.results),
   })
 }
