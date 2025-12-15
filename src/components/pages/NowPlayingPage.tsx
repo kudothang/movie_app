@@ -1,8 +1,9 @@
-
 import { useNowPlaying } from "@/hooks/useNowPlaying";
 import MovieCard from "../ui/MovieCard";
 import { useSearchParams } from "react-router-dom";
 import type { Movie } from '@/types'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 
@@ -11,10 +12,8 @@ export default function NowPlayingPage() {
   const page = Number(params.get("page")) || 1;
   const { data, isLoading,
     isError,
-    isFetching,
-
   } = useNowPlaying(page)
-  const visibleMovies: Movie[] = data ?? []
+  const showMovies: Movie[] = data ?? []
   const title = "Now Playing Movies"
   const handleNextPage = () => {
     const nextPage = page + 1
@@ -35,27 +34,20 @@ export default function NowPlayingPage() {
         {/* Grid: 5 cột 4 dòng */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-12 gap-y-8 mb-16">
           {isLoading ? (
-            // Skeleton loading
-            [...Array(20)].map((_, i) => (
-              <div key={i} className="p-2">
-                <div className="bg-gray-800 rounded-xl aspect-2/3 animate-pulse" />
-              </div>
+            // Skeleton loading using react-loading-skeleton
+            [...Array(20)].map((_, index) => (
+              <div key={`skeleton-${index}`} className="movie-card" style={{
+                }}>
+                  <Skeleton height={200} /> 
+                </div>
             ))
           ) : (
-            visibleMovies.map((movie) => (
+            showMovies.map((movie) => (
               <div key={movie.id} className="p-2">
                 <MovieCard movie={movie} />
               </div>
             ))
           )}
-
-          {/* Skeleton khi đang load more */}
-          {isFetching &&
-            [...Array(10)].map((_, i) => (
-              <div key={`load-${i}`} className="p-2">
-                <div className="bg-gray-800 rounded-xl aspect-2/3 animate-pulse" />
-              </div>
-            ))}
         </div>
         <div className="pagination flex items-center justify-center gap-4 mb-8">
           <button className="cursor-pointer" onClick={handlePrevPage}>Previous</button>

@@ -14,7 +14,7 @@ export default function UpComingMovies() {
     isFetching,
 
   } = useUpcomingMovies(page)
-  const visibleMovies: Movie[] = data ?? []
+  const showMovies: Movie[] = data ?? []
   const title = "Up Coming Movies"
   const handleNextPage = () => {
     const nextPage = page + 1
@@ -42,7 +42,7 @@ export default function UpComingMovies() {
               </div>
             ))
           ) : (
-            visibleMovies.map((movie) => (
+            showMovies.map((movie) => (
               <div key={movie.id} className="p-2">
                 <MovieCard movie={movie} />
               </div>

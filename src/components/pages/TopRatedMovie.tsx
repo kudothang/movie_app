@@ -15,7 +15,7 @@ export default function TopRatedMovies() {
     isFetching,
 
   } = useTopRatedMovies(page)
-  const visibleMovies: Movie[] = data ?? []
+  const showMovies: Movie[] = data ?? []
   const title = "Top Rated Movies"
   const handleNextPage = () => {
     const nextPage = page + 1
@@ -43,7 +43,7 @@ export default function TopRatedMovies() {
               </div>
             ))
           ) : (
-            visibleMovies.map((movie) => (
+            showMovies.map((movie) => (
               <div key={movie.id} className="p-2">
                 <MovieCard movie={movie} />
               </div>

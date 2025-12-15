@@ -1,4 +1,4 @@
-// app/page.tsx (or relevant page file for home)
+
 
 import { Header } from "@/components/common/Header";
 import { Sidebar } from "@/components/common/SideBar";
@@ -9,7 +9,7 @@ import { Outlet } from "react-router";
 
 export default function MainLayout() {
     return (
-        <div className="flex min-h-screen bg-gray-800 text-white">
+        <div className="flex min-h-screen  bg-gray-800 text-white">
             <div className="flex-none md:flex md:w-50 "> 
             <Sidebar/>
             </div>
