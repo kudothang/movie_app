@@ -4,7 +4,6 @@ import { Link } from "react-router";
 
 interface MovieCardProps {
   movie?: Movie;
-
   }
 
 

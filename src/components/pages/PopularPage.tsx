@@ -4,6 +4,7 @@ import MovieCard from "../ui/MovieCard";
 import { useSearchParams } from "react-router-dom";
 import type { Movie } from '@/types'
 import { usePopularMovies } from "@/hooks/usePopularMovies";
+import Skeleton from "react-loading-skeleton";
 
 
 
@@ -37,10 +38,11 @@ export default function PopularPage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-12 gap-y-8 mb-16">
           {isLoading ? (
             // Skeleton loading
-            [...Array(20)].map((_, i) => (
-              <div key={i} className="p-2">
-                <div className="bg-gray-800 rounded-xl aspect-2/3 animate-pulse" />
-              </div>
+            [...Array(20)].map((_, index) => (
+              <div key={`skeleton-${index}`} className="movie-card" style={{
+               }}>
+                 <Skeleton height={200} /> 
+            </div>
             ))
           ) : (
             showMovies.map((movie) => (
