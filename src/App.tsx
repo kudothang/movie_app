@@ -8,9 +8,6 @@ import TopRatedMovies from './components/pages/TopRatedMovie'
 import UpComingMovies from './components/pages/UpcomingMovies'
 
 
-// import MovieDetail from './pages/MovieDetail'
-// import Favorites from './pages/Favorites'
-// import NotFound from './pages/NotFound'
 
 function App() {
   return (

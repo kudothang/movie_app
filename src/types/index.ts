@@ -7,11 +7,7 @@ export interface Movie {
   overview: string
   vote_average: number
   release_date: string
-  movie_cast: Array<{
-    name: string
-    character: string
-    profile_path: string
-  }>
+
 }
 
 export interface TMDBResponse {

@@ -1,6 +1,6 @@
 import { useNowPlaying } from "@/hooks/useNowPlaying";
 import MovieCard from "../ui/MovieCard";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 import type { Movie } from '@/types'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
